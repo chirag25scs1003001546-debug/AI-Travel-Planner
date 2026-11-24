@@ -217,6 +217,7 @@ User question: {message}"""
     if answer:
         return jsonify({"reply": answer, "mode": "ai"})
 
+    app.longer.error("GEMINI CHAT ERROR: %s", error)
     # Return the real failure reason (never the API key) instead of always claiming
     # that the key is missing. This makes the next fix diagnosable from the UI/API.
     return jsonify({
